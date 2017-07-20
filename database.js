@@ -21,3 +21,15 @@ updateBox = function() {
     var database = firebase.database();
     database.ref("players/" + uid + "/" + box.id).set(box);
 }
+
+getMyBoxes = function() {
+    var uid = firebase.auth().currentUser.uid;
+    var database = firebase.database();
+    database.ref("players/" + uid).on("value", function(snapshot){
+        var boxes = Object.values(snapshot.val());
+        document.getElementById("myMusicBoxes").innerHTML = '';
+        boxes.forEach(function(box){
+            document.getElementById("myMusicBoxes").innerHTML += '<li>' + box.name + '</li>'
+        })
+    })
+}
