@@ -10,4 +10,11 @@ addBox = function() {
     var uid = firebase.auth().currentUser.uid;
     var database = firebase.database();
     box.id = database.ref('players/' + uid).push(box).key; 
+
+    document.getElementById("box").innerText = JSON.stringify(box);
+}
+
+updateBox = function() {
+    var newBox = JSON.parse(document.getElementById("box").value)
+    // TODO: Update db
 }
