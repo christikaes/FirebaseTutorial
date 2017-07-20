@@ -1,5 +1,19 @@
 <html>
     <head>
+        <script src="secrets.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            // Create a secrets file that contains your firebaseConfig so that you don't commit that to git
+            var config = {
+                apiKey: secrets.firebaseConfig.apiKey,
+                authDomain: secrets.firebaseConfig.authDomain,
+                databaseURL: secrets.firebaseConfig.databaseURL,
+                storageBucket: secrets.firebaseConfig.storageBucket,
+                messagingSenderId: secrets.firebaseConfig.messagingSenderId,
+            };
+            firebase.initializeApp(config);
+        </script>
     </head>
     <body>
         <div id="error"></div>
