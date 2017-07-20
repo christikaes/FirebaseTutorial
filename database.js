@@ -7,5 +7,7 @@ var getNewBox = function() {
 
 addBox = function() {
     var box = getNewBox();
-    // TODO: Add a new box 
+    var uid = firebase.auth().currentUser.uid;
+    var database = firebase.database();
+    box.id = database.ref('players/' + uid).push(box).key; 
 }
