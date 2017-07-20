@@ -16,5 +16,8 @@ addBox = function() {
 
 updateBox = function() {
     var newBox = JSON.parse(document.getElementById("box").value)
-    // TODO: Update db
+    var box = JSON.parse(document.getElementById("box").value);
+    var uid = firebase.auth().currentUser.uid;
+    var database = firebase.database();
+    database.ref("players/" + uid + "/" + box.id).set(box);
 }
