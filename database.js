@@ -33,3 +33,20 @@ getMyBoxes = function() {
         })
     })
 }
+
+getPublicBoxes = function() {
+    var database = firebase.database();
+    database.ref("players/").on("value", function(snapshot){
+        var players = Object.values(snapshot.val());
+
+        var boxes = [];
+        players.forEach(function(player){
+            boxes = boxes.concat(Object.values(player))
+        })
+
+        document.getElementById("publicMusicBoxes").innerHTML = '';
+        boxes.forEach(function(box){
+            document.getElementById("publicMusicBoxes").innerHTML += '<li>' + box.name + '</li>'
+        })
+    })
+}
